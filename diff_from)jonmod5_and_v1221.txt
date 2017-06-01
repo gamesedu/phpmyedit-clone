@@ -1,0 +1,40 @@
+Line 85 :
+
+//= array('oper'  => 'IN', 'value' => '('.join(',', $ids).')'); // JON final WHERE  IN creation ** (checkbox [problem|) ORIG line
+=array('oper' => 'LIKE', 'value' => "'$afilter'"); //JON added  FIX (beta version)
+					
+
+
+line 113 : 
+echo ' id="',$this->cgi['prefix']['data'].$this->fds[$k],'"'; // BY VICTOR: INPUT ID IS NECESSARY TO JSCALENDAR.  
+
+
+line 202:
+
+		// /* Commented by jon (tried to modify for quicker record count ...
+
+		if (strlen(@$this->message) > 0) {
+			echo '<td class="',$this->getCSSclass('message', $position),'">',$this->message,'</td>',"\n";
+		}
+		if($this->display['num_pages'] || $this->display['num_records'])
+			echo '<td class="',$this->getCSSclass('stats', $position),'">',"\n";
+		if($this->display['num_pages']) {
+			if ($this->listall()) {
+				echo $this->labels['Page'],':&nbsp;1&nbsp;',$this->labels['of'],'&nbsp;1';
+			} else {
+				$current_page = intval($this->fm / $this->inc) + 1;
+				$total_pages  = max(1, ceil($this->total_recs / abs($this->inc)));
+				echo $this->labels['Page'],':&nbsp;',$current_page;
+				echo '&nbsp;',$this->labels['of'],'&nbsp;',$total_pages;
+			}
+		}
+		if($this->display['num_records'])
+			echo '&nbsp; ',$this->labels['Records'],':&nbsp;',$this->total_recs;
+		if($this->display['num_pages'] || $this->display['num_records']) echo '</td>';
+		echo '</tr></table>',"\n";
+  		// jon */ 
+
+
+
+
+
