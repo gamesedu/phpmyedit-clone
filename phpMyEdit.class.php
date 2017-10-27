@@ -314,7 +314,7 @@ class phpMyEdit
 	} /* }}} */
 
 	/*
-	 * sql functions
+	 * sql functions 
      */
 	function sql_connect() /* {{{ */
 	{
@@ -323,10 +323,12 @@ class phpMyEdit
 			$this->dbh = @ini_get('allow_persistent')
 				? mysqli_connect('p:'.$this->hn, $this->un, $this->pw, $flags)
 				: mysqli_connect($this->hn, $this->un, $this->pw, $flags);
+				@mysqli_query($this->dbh , "SET NAMES 'utf8'");  //ADDED By JOHN
 		} else { // FOR OLD PHP
 			$this->dbh = @ini_get('allow_persistent')
 				? @mysql_pconnect($this->hn, $this->un, $this->pw, $flags)
 				: @mysql_connect($this->hn, $this->un, $this->pw, false, $flags);
+				@mysqli_query("SET NAMES 'utf8'",$this->dbh);  //ADDED By JOHN
 		}
 	} /* }}} */
 		
